@@ -1,0 +1,25 @@
+body {
+	background-color: #BFEFFF;
+}
+
+h1 {
+	text-align: center;
+}
+
+
+/* tabela */
+
+table {
+	border-collapse: collapse;
+}
+
+th, td {
+	background: #BFEFFF;
+	padding: 15px;
+	text-align: center; 
+	border: 2px solid;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}

@@ -1,0 +1,74 @@
+<meta charset="UTF-8">
+<div class="panel panel-default">
+	<div class="panel-body">
+		
+
+			<div class="row">
+				<div class="col">
+			
+					<div class="d-flex justify-content-center">
+					<a href="index.html"><button style="background: #069cc2; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 16px;">PÁGINA INICIAL</button></a>
+					</div>
+				</div>
+			</div>
+
+
+			<h4>POSTAGENS</h4>
+	
+
+			<div class="d-flex justify-content-center">
+
+					<table id="tabela"></table>
+
+						<script>
+							// postagens
+
+							function fazGet(url) {
+								let request = new XMLHttpRequest();
+								request.open("GET", url, false);
+								request.send();
+								return request.responseText;
+
+								console.log(request)
+							} 
+
+							function criaLinha(postagem) {
+								console.log(postagem)
+								linha = document.createElement("tr");
+								tdUserId = document.createElement("td");
+								tdID = document.createElement("td");
+								tdTitle = document.createElement("td");
+								tdBody = document.createElement("td");
+								tdUserId.innerHTML = postagem.userId;
+								tdID.innerHTML = postagem.id;
+								tdTitle.innerHTML = postagem.title;
+								tdBody.innerHTML = postagem.body;
+								
+								linha.appendChild(tdUserId);
+								linha.appendChild(tdID);
+								linha.appendChild(tdTitle);
+								linha.appendChild(tdBody);
+								
+
+								return linha;
+
+
+							}
+
+							function main() {
+								let data = fazGet("https://jsonplaceholder.typicode.com/posts");
+								let postagens = JSON.parse(data);
+								let tabela = document.getElementById("tabela");
+								postagens.forEach(element => {
+									let linha = criaLinha(element);
+									tabela.appendChild(linha);
+								})
+							}
+
+							main();
+						</script>
+
+				</div>
+		</div>
+</div>
+	
